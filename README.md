@@ -1,5 +1,5 @@
-# Mod Template
-A very barebones mod template for creating Minecraft mods for versions 1.8.9 - 1.21, with support for Fabric, (Lex)Forge and NeoForge.
+# Favorita
+A simple Minecraft mod which allows you to favorite your items.
 
 ---
 
