@@ -5,15 +5,11 @@
     "name": "${mod_name}",
     "description": "I'm a template mod!",
     "authors": [
-        "Template Author"
-    ],
-    "contributors": [
-        "Template Contributor"
+        "Deftu"
     ],
     "contact": {
-        "homepage": "...",
-        "issues": "...",
-        "sources": "..."
+        "issues": "https://github.com/Deftu/${mod_name}/issues",
+        "sources": "https://github.com/Deftu/${mod_name}"
     },
     "license": "LGPL-3.0-or-later",
     "environment": "*",
@@ -21,13 +17,22 @@
         "main": [
             {
                 "adapter": "kotlin",
-                "value": "dev.deftu.modtemplate.ModTemplate"
+                "value": "dev.deftu.favorita.entrypoint.FavoritaEntrypoint"
+            }
+        ],
+        "client": [
+            {
+                "adapter": "kotlin",
+                "value": "dev.deftu.favorita.entrypoint.FavoritaEntrypoint"
+            }
+        ],
+        "server": [
+            {
+                "adapter": "kotlin",
+                "value": "dev.deftu.favorita.entrypoint.FavoritaEntrypoint"
             }
         ]
     },
-    "mixins": [
-        "${mod_id}.mixins.json"
-    ],
     "depends": {
         "fabric": "*",
         "fabricloader": ">=0.15.11",
