@@ -2,14 +2,15 @@ package dev.deftu.favorita.entrypoint
 
 //#if FABRIC
 import net.fabricmc.api.ClientModInitializer
-import net.fabricmc.api.ModInitializer
 //#elseif FORGE
-//#if MC >= 1.15.2
+//#if MC >= 1.16.5
 //$$ import net.minecraftforge.eventbus.api.IEventBus
 //$$ import net.minecraftforge.fml.common.Mod
 //$$ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
-//$$ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 //$$ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
+//#if MC >= 1.19.2
+//$$ import net.minecraftforge.client.event.RegisterKeyMappingsEvent
+//#endif
 //#else
 //$$ import net.minecraftforge.fml.common.Mod
 //$$ import net.minecraftforge.fml.common.Mod.EventHandler
@@ -19,10 +20,9 @@ import net.fabricmc.api.ModInitializer
 //$$ import net.neoforged.bus.api.IEventBus
 //$$ import net.neoforged.fml.common.Mod
 //$$ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
-//$$ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
+//$$ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent
 //#endif
 
-import dev.deftu.favorita.Favorita
 import dev.deftu.favorita.client.FavoritaClient
 
 //#if FORGE-LIKE
@@ -31,12 +31,12 @@ import dev.deftu.favorita.client.FavoritaClient
 //#if MC >= 1.15.2
 //$$ @Mod(FavoritaConstants.ID)
 //#else
-//$$ @Mod(modid = FavoritaConstants.ID)
+//$$ @Mod(modid = FavoritaConstants.ID, version = FavoritaConstants.VERSION)
 //#endif
 //#endif
 class FavoritaEntrypoint
     //#if FABRIC
-    : ModInitializer, ClientModInitializer
+    : ClientModInitializer
     //#endif
 {
 
@@ -52,21 +52,8 @@ class FavoritaEntrypoint
 
     //#if FABRIC
     override
-    //#endif
-    fun onInitialize(
-        //#if FORGE-LIKE
-        //#if MC >= 1.15.2
-        //$$ event: FMLCommonSetupEvent
-        //#else
-        //$$ event: FMLInitializationEvent
-        //#endif
-        //#endif
-    ) {
-        Favorita.onInitializeCommon()
-    }
-
-    //#if FABRIC
-    override
+    //#elseif MC <= 1.12.2
+    //$$ @Mod.EventHandler
     //#endif
     fun onInitializeClient(
         //#if FORGE-LIKE
@@ -84,10 +71,16 @@ class FavoritaEntrypoint
         FavoritaClient.onInitializeClient()
     }
 
-    //#if FORGE-LIKE && MC >= 1.15.2
+    //#if FORGE-LIKE && MC >= 1.16.5
     //$$ fun setupForgeEvents(modEventBus: IEventBus) {
-    //$$     modEventBus.addListener(this::onInitialize)
     //$$     modEventBus.addListener(this::onInitializeClient)
+    //#if MC >= 1.19.2
+    //$$     modEventBus.addListener<RegisterKeyMappingsEvent> { event ->
+    //$$         for (keyBinding in FavoritaClient.getKeyBindings()) {
+    //$$             event.register(keyBinding)
+    //$$         }
+    //$$     }
+    //#endif
     //$$ }
     //#endif
 

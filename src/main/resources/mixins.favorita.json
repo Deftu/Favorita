@@ -1,0 +1,16 @@
+{
+    "required": true,
+    "package": "dev.deftu.favorita.mixins",
+    "plugin": "dev.deftu.favorita.mixins.MixinPlugin",
+    "compatibilityLevel": "${java_version}",
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "client": [
+        "client.Mixin_BlockFavoritedCreativeSlots",
+        "client.Mixin_BlockFavoritedHotbarSlots",
+        "client.Mixin_BlockFavoritedSlots",
+        "client.Mixin_DrawSlotBorder",
+        "client.Mixin_HookKeyBinding"
+    ]
+}

@@ -1,0 +1,22 @@
+net.minecraft.world.inventory.Slot net.minecraft.inventory.Slot
+net.minecraft.client.gui.screens.inventory.AbstractContainerScreen net.minecraft.client.gui.inventory.GuiContainer
+net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen net.minecraft.client.gui.inventory.GuiContainerCreative
+net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen selectedTab selectedTabIndex
+net.minecraft.world.item.CreativeModeTab net.minecraft.creativetab.CreativeTabs
+net.minecraft.world.item.CreativeModeTab getId() getIndex()
+net.minecraft.client.gui.screens.inventory.InventoryScreen net.minecraft.client.gui.inventory.GuiInventory
+net.minecraft.world.entity.player.Inventory net.minecraft.entity.player.InventoryPlayer
+net.minecraft.client.player.LocalPlayer net.minecraft.client.entity.EntityPlayerSP
+net.minecraft.sounds.SoundEvents net.minecraft.init.SoundEvents
+net.minecraft.sounds.SoundEvents NOTE_BLOCK_BASS BLOCK_NOTE_BASS
+net.minecraft.sounds.SoundEvents EXPERIENCE_ORB_PICKUP ENTITY_EXPERIENCE_ORB_PICKUP
+net.minecraft.client.player.AbstractClientPlayer net.minecraft.client.entity.AbstractClientPlayer
+net.minecraft.client.multiplayer.ClientLevel net.minecraft.world.World
+net.minecraft.world.entity.LivingEntity net.minecraft.entity.EntityLivingBase
+net.minecraft.world.inventory.ClickType net.minecraft.inventory.ClickType
+net.minecraft.client.multiplayer.MultiPlayerGameMode net.minecraft.client.multiplayer.PlayerControllerMP
+net.minecraft.world.entity.player.Player net.minecraft.entity.player.EntityPlayer
+net.minecraft.world.entity.player.Player containerMenu openContainer
+net.minecraft.world.inventory.AbstractContainerMenu net.minecraft.inventory.Container
+net.minecraft.world.inventory.AbstractContainerMenu handlerId windowId
+net.minecraft.client.gui.screens.Screen net.minecraft.client.gui.GuiScreen

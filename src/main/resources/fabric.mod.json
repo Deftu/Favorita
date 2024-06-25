@@ -3,7 +3,6 @@
     "id": "${mod_id}",
     "version": "${mod_version}",
     "name": "${mod_name}",
-    "description": "I'm a template mod!",
     "authors": [
         "Deftu"
     ],
@@ -14,25 +13,16 @@
     "license": "LGPL-3.0-or-later",
     "environment": "*",
     "entrypoints": {
-        "main": [
-            {
-                "adapter": "kotlin",
-                "value": "dev.deftu.favorita.entrypoint.FavoritaEntrypoint"
-            }
-        ],
         "client": [
-            {
-                "adapter": "kotlin",
-                "value": "dev.deftu.favorita.entrypoint.FavoritaEntrypoint"
-            }
-        ],
-        "server": [
             {
                 "adapter": "kotlin",
                 "value": "dev.deftu.favorita.entrypoint.FavoritaEntrypoint"
             }
         ]
     },
+    "mixins": [
+        "mixins.${mod_id}.json"
+    ],
     "depends": {
         "fabric": "*",
         "fabricloader": ">=0.15.11",
