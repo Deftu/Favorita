@@ -4,7 +4,7 @@ files:
   - source: src/main/resources/assets/favorita/lang/en_US.json
     translation:
       - src/main/resources/assets/favorita/lang/%locale_with_underscore%.json
-      - /src/main/resources/assets/minecraft/lang/%locale_with_underscore%.lang
+      - src/main/resources/assets/minecraft/lang/%locale_with_underscore%.lang
     update_option: update_as_unapproved
 bundles:
   - 4
