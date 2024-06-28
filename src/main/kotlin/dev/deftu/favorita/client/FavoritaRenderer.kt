@@ -14,7 +14,7 @@ import java.awt.Color
 
 object FavoritaRenderer {
 
-    private val LOCK = IdentifierUtils.create("minecraft", "textures/favorita_lock.png")
+    private val LOCK = IdentifierUtils.create(FavoritaConstants.ID, "lock.png")
 
     /**
      * Draws a [width] pixel border around a rectangle.
