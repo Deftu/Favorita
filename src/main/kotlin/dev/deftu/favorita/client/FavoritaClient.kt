@@ -1,6 +1,7 @@
 package dev.deftu.favorita.client
 
 //#if FABRIC
+import dev.deftu.favorita.FavoritaConstants
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
 //#elseif FORGE
 //#if MC == 1.18.2
@@ -28,7 +29,7 @@ object FavoritaClient {
 
     @JvmStatic
     val favoriteKeyBinding: KeyBinding by lazy {
-        KeyBinding("key.favorita.favorite", OmniKeyboard.KEY_F, "key.categories.favorita")
+        KeyBinding("key.favorita.favorite", OmniKeyboard.KEY_F, FavoritaConstants.NAME)
     }
 
     internal fun onInitializeClient() {
