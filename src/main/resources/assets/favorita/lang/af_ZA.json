@@ -1,0 +1,18 @@
+[
+    {
+        "identifier": "\"key.favorita.favorite\"",
+        "source_string": "Favorite Slot",
+        "translation": "Gunsteling Slot",
+        "context": null,
+        "labels": "en_us.json",
+        "max_length": null
+    },
+    {
+        "identifier": "\"message.favorita.blocked\"",
+        "source_string": "This slot is locked!",
+        "translation": "Hierdie gleuf is gesluit!",
+        "context": null,
+        "labels": "en_us.json",
+        "max_length": null
+    }
+]
