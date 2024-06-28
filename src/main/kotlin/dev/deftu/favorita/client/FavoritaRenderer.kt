@@ -16,9 +16,6 @@ object FavoritaRenderer {
 
     private val LOCK = IdentifierUtils.create(FavoritaConstants.ID, "lock.png")
 
-    /**
-     * Draws a [width] pixel border around a rectangle.
-     */
     @Internal
     @JvmStatic
     @GameSide(Side.CLIENT)
