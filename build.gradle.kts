@@ -17,6 +17,10 @@ plugins {
     id("dev.deftu.gradle.tools.minecraft.releases")
 }
 
+toolkitMultiversion {
+    moveBuildsToRootProject.set(true)
+}
+
 toolkitLoomHelper {
     disableRunConfigs(GameSide.SERVER)
 
@@ -31,28 +35,6 @@ toolkitLoomHelper {
 
     if (mcData.isForgeLike && mcData.version >= MinecraftVersion.VERSION_1_15_2) {
         useKotlinForForge()
-    }
-}
-
-dependencies {
-    val textileVersion = "0.3.1"
-    val omnicoreVersion = "0.6.0"
-    modImplementation("dev.deftu:textile-$mcData:$textileVersion")
-    modImplementation("dev.deftu:omnicore-$mcData:$omnicoreVersion")
-
-    if (mcData.isFabric) {
-        modImplementation("net.fabricmc.fabric-api:fabric-api:${mcData.dependencies.fabric.fabricApiVersion}")
-        modImplementation("net.fabricmc:fabric-language-kotlin:${mcData.dependencies.fabric.fabricLanguageKotlinVersion}")
-
-        modImplementation(mcData.dependencies.fabric.modMenuDependency)
-    } else if (mcData.version <= MinecraftVersion.VERSION_1_12_2) {
-        implementation(includeOrShade(kotlin("stdlib-jdk8"))!!)
-        implementation(includeOrShade("org.jetbrains.kotlin:kotlin-reflect:1.6.10")!!)
-
-        modImplementation(includeOrShade("org.spongepowered:mixin:0.7.11-SNAPSHOT")!!)
-
-        includeOrShade("dev.deftu:textile-$mcData:$textileVersion")
-        includeOrShade("dev.deftu:omnicore-$mcData:$omnicoreVersion")
     }
 }
 
@@ -78,6 +60,28 @@ toolkitReleases {
     }
 }
 
+dependencies {
+    val textileVersion = "0.3.1"
+    val omnicoreVersion = "0.6.0"
+    modImplementation("dev.deftu:textile-$mcData:$textileVersion")
+    modImplementation("dev.deftu:omnicore-$mcData:$omnicoreVersion")
+
+    if (mcData.isFabric) {
+        modImplementation("net.fabricmc.fabric-api:fabric-api:${mcData.dependencies.fabric.fabricApiVersion}")
+        modImplementation("net.fabricmc:fabric-language-kotlin:${mcData.dependencies.fabric.fabricLanguageKotlinVersion}")
+
+        modImplementation(mcData.dependencies.fabric.modMenuDependency)
+    } else if (mcData.isLegacyForge) {
+        implementation(includeOrShade(kotlin("stdlib-jdk8"))!!)
+        implementation(includeOrShade("org.jetbrains.kotlin:kotlin-reflect:1.6.10")!!)
+
+        modImplementation(includeOrShade("org.spongepowered:mixin:0.7.11-SNAPSHOT")!!)
+
+        includeOrShade("dev.deftu:textile-$mcData:$textileVersion")
+        includeOrShade("dev.deftu:omnicore-$mcData:$omnicoreVersion")
+    }
+}
+
 tasks {
 
     fatJar {
@@ -85,15 +89,6 @@ tasks {
             relocate("dev.deftu.textile", "dev.deftu.favorita.textile")
             relocate("dev.deftu.omnicore", "dev.deftu.favorita.omnicore")
         }
-        
-        exclude("META-INF/versions/**")
-        exclude("META-INF/proguard/**")
-        exclude("META-INF/maven/**")
-        exclude("META-INF/com.android.tools/**")
-    }
-
-    remapJar {
-        destinationDirectory.set(rootProject.layout.buildDirectory.asFile.get().resolve("jars"))
     }
 
 }
