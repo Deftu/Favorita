@@ -8,6 +8,7 @@ license="LGPL-3.0-or-later"
     version="${mod_version}"
     displayName="${mod_name}"
     authors="Deftu"
+    logoFile="assets/${mod_id}/icon.png"
 
 [[dependencies.${mod_id}]]
     modId="minecraft"
