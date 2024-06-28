@@ -80,9 +80,12 @@ toolkitReleases {
 
 tasks {
 
-    jar {
-        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-
+    fatJar {
+        if (mcData.isLegacyForge) {
+            relocate("dev.deftu.textile", "dev.deftu.favorita.textile")
+            relocate("dev.deftu.omnicore", "dev.deftu.favorita.omnicore")
+        }
+        
         exclude("META-INF/versions/**")
         exclude("META-INF/proguard/**")
         exclude("META-INF/maven/**")
