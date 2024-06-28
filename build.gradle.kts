@@ -78,12 +78,19 @@ toolkitReleases {
     }
 }
 
-sourceSets {
-    main {
-        output.setResourcesDir(java.classesDirectory)
-    }
-}
+tasks {
 
-tasks.remapJar {
-    destinationDirectory.set(rootProject.layout.buildDirectory.asFile.get().resolve("jars"))
+    jar {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+        exclude("META-INF/versions/**")
+        exclude("META-INF/proguard/**")
+        exclude("META-INF/maven/**")
+        exclude("META-INF/com.android.tools/**")
+    }
+
+    remapJar {
+        destinationDirectory.set(rootProject.layout.buildDirectory.asFile.get().resolve("jars"))
+    }
+
 }
