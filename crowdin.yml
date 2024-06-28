@@ -8,3 +8,4 @@ files:
     update_option: update_as_unapproved
 bundles:
   - 4
+  - 6
