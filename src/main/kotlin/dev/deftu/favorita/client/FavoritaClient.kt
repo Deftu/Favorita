@@ -1,7 +1,6 @@
 package dev.deftu.favorita.client
 
 //#if FABRIC
-import dev.deftu.favorita.FavoritaConstants
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
 //#elseif FORGE
 //#if MC == 1.18.2
@@ -13,6 +12,7 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
 //#endif
 //#endif
 
+import dev.deftu.favorita.FavoritaConstants
 import dev.deftu.omnicore.client.OmniKeyboard
 import net.minecraft.client.option.KeyBinding
 import org.apache.logging.log4j.LogManager
