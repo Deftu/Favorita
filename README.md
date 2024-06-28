@@ -1,5 +1,5 @@
 # Favorita
-A simple Minecraft mod which allows you to favorite your items.
+A simple Minecraft mod which allows you to favorite your slots.
 
 ---
 
