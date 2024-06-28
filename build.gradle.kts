@@ -55,6 +55,8 @@ dependencies {
 }
 
 toolkitReleases {
+    detectVersionType.set(true)
+
     modrinth {
         projectId.set("XLpX6IPW")
         if (mcData.loader == ModLoader.FABRIC) {
