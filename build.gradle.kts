@@ -36,7 +36,7 @@ toolkitLoomHelper {
 
 dependencies {
     val textileVersion = "0.3.1"
-    val omnicoreVersion = "0.5.0"
+    val omnicoreVersion = "0.6.0"
     modImplementation("dev.deftu:textile-$mcData:$textileVersion")
     modImplementation("dev.deftu:omnicore-$mcData:$omnicoreVersion")
 
