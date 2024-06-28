@@ -3,6 +3,8 @@ A simple Minecraft mod which allows you to favorite your items.
 
 ---
 
+[![Crowdin](https://badges.crowdin.net/favorita/localized.svg)](https://crowdin.com/project/favorita)
+
 [![Discord Badge](https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/cozy/social/discord-singular_64h.png)](https://s.deftu.dev/discord)
 [![Ko-Fi Badge](https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/cozy/donate/kofi-singular_64h.png)](https://s.deftu.dev/kofi)
 
