@@ -1,4 +1,4 @@
-commit_message: New translations for %language%
+commit_message: New translations
 append_commit_message: 
 files:
   - source: src/main/resources/assets/favorita/lang/en_US.json
