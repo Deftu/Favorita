@@ -43,6 +43,8 @@ dependencies {
     if (mcData.isFabric) {
         modImplementation("net.fabricmc.fabric-api:fabric-api:${mcData.dependencies.fabric.fabricApiVersion}")
         modImplementation("net.fabricmc:fabric-language-kotlin:${mcData.dependencies.fabric.fabricLanguageKotlinVersion}")
+
+        modImplementation(mcData.dependencies.fabric.modMenuDependency)
     } else if (mcData.version <= MinecraftVersion.VERSION_1_12_2) {
         implementation(includeOrShade(kotlin("stdlib-jdk8"))!!)
         implementation(includeOrShade("org.jetbrains.kotlin:kotlin-reflect:1.6.10")!!)

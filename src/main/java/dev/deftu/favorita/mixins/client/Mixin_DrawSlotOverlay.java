@@ -28,7 +28,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(HandledScreen.class)
-public class Mixin_DrawSlotBorder
+public class Mixin_DrawSlotOverlay
     //#if MC >= 1.16.5
         <T extends ScreenHandler>
     //#endif
@@ -48,14 +48,12 @@ public class Mixin_DrawSlotBorder
             //#endif
             at = @At(
                     value = "INVOKE",
-                    //#if MC >= 1.20.1
-                    target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;drawForeground(Lnet/minecraft/client/gui/DrawContext;II)V",
-                    //#elseif MC >= 1.16.5
-                    //$$ target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;drawForeground(Lnet/minecraft/client/util/math/MatrixStack;II)V",
+                    //#if MC >= 1.16.5
+                    target = "Lnet/minecraft/client/util/math/MatrixStack;pop()V",
                     //#else
-                    //$$ target = "Lnet/minecraft/client/gui/inventory/GuiContainer;drawGuiContainerForegroundLayer(II)V",
+                    //$$ target = "Lnet/minecraft/client/renderer/GlStateManager;popMatrix()V",
                     //#endif
-                    shift = At.Shift.AFTER
+                    shift = At.Shift.BEFORE
             )
     )
     private void favorita$onPostSlotRender(
@@ -94,13 +92,12 @@ public class Mixin_DrawSlotBorder
                 continue;
             }
 
-            FavoritaRenderer.drawBorder(
+            FavoritaRenderer.drawSlotOverlay(
                     stack,
                     slot.x,
                     slot.y,
                     16,
-                    16,
-                    1.5F
+                    16
             );
         }
     }
