@@ -3,7 +3,7 @@ A simple Minecraft mod which allows you to favorite your slots.
 
 ---
 
-[![Crowdin Badge](https://badges.crowdin.net/favorita/localized.svg)](https://crowdin.com/project/favorita)
+[![Crowdin Badge](https://wsrv.nl/?url=https%3A%2F%2Fbadges.crowdin.net%2Ffavorita%2Flocalized.svg&n=-1&maxage=1d)](https://crowdin.com/project/favorita)
 
 [![Discord Badge](https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/cozy/social/discord-singular_64h.png)](https://s.deftu.dev/discord)
 [![Ko-Fi Badge](https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/cozy/donate/kofi-singular_64h.png)](https://s.deftu.dev/kofi)
