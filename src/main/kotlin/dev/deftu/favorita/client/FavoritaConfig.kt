@@ -8,6 +8,7 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import dev.deftu.favorita.FavoritaConstants
+import dev.deftu.favorita.exceptions.NoIdentifierException
 import dev.deftu.omnicore.annotations.GameSide
 import dev.deftu.omnicore.annotations.Side
 import dev.deftu.omnicore.client.OmniClient
@@ -58,7 +59,14 @@ object FavoritaConfig {
     private var isDirty = false
 
     private val currentIdentifier: String
-        get() = OmniClient.Multiplayer.getCurrentServerAddress() ?: SINGLEPLAYER_IDENTIFIER
+        get() {
+            val serverIdentifier = OmniClient.Multiplayer.getCurrentServerAddress()
+            if (serverIdentifier == null && OmniClient.getWorld() == null) {
+                throw NoIdentifierException("No server or world is loaded!")
+            }
+
+            return serverIdentifier ?: SINGLEPLAYER_IDENTIFIER
+        }
 
     @Internal
     @JvmStatic
@@ -139,6 +147,7 @@ object FavoritaConfig {
         identifier: String,
         slotIndex: Int
     ): Boolean {
+        checkIdentifier(identifier)
         return data[identifier]?.contains(slotIndex) == true
     }
 
@@ -157,6 +166,8 @@ object FavoritaConfig {
         slotIndex: Int,
         isFavorited: Boolean
     ) {
+        checkIdentifier(identifier)
+
         val slots = data.getOrPut(identifier) { mutableSetOf() }.toMutableSet()
         if (isFavorited) {
             slots.add(slotIndex)
@@ -173,6 +184,14 @@ object FavoritaConfig {
     @GameSide(Side.CLIENT)
     fun setFavorited(slotIndex: Int, isFavorited: Boolean) {
         setFavorited(currentIdentifier, slotIndex, isFavorited)
+    }
+
+    private fun checkIdentifier(identifier: String) {
+        if (identifier.isNotBlank()) {
+            return
+        }
+
+        throw NoIdentifierException("Identifier cannot be blank!")
     }
 
 }
