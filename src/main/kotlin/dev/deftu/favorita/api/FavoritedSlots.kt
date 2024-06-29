@@ -1,6 +1,7 @@
 package dev.deftu.favorita.api
 
 import dev.deftu.favorita.client.FavoritaConfig
+import dev.deftu.favorita.exceptions.NoIdentifierException
 import dev.deftu.omnicore.annotations.GameSide
 import dev.deftu.omnicore.annotations.Side
 
@@ -11,6 +12,10 @@ object FavoritedSlots {
      *
      * @param identifier The name of the world or address of the server.
      * @param slotIndex The slot index to check.
+     *
+     * @throws NoIdentifierException If the given identifier is empty.
+     * @since 0.1.0
+     * @author Deftu
      */
     @JvmStatic
     @GameSide(Side.CLIENT)
@@ -24,7 +29,9 @@ object FavoritedSlots {
      *
      * @param slotIndex The slot index to check.
      *
-     * @throws IllegalStateException If no server or world is loaded.
+     * @throws NoIdentifierException If no server or world is loaded.
+     * @since 0.1.0
+     * @author Deftu
      */
     @JvmStatic
     @GameSide(Side.CLIENT)
@@ -38,6 +45,10 @@ object FavoritedSlots {
      * @param identifier The name of the world or address of the server.
      * @param slotIndex The slot index to set.
      * @param isFavorited Whether the slot should be favorited.
+     *
+     * @throws NoIdentifierException If the given identifier is empty.
+     * @since 0.1.0
+     * @author Deftu
      */
     @JvmStatic
     @GameSide(Side.CLIENT)
@@ -53,7 +64,9 @@ object FavoritedSlots {
      * @param slotIndex The slot index to set.
      * @param isFavorited Whether the slot should be favorited.
      *
-     * @throws IllegalStateException If no server or world is loaded.
+     * @throws NoIdentifierException If no server or world is loaded.
+     * @since 0.1.0
+     * @author Deftu
      */
     @JvmStatic
     @GameSide(Side.CLIENT)
