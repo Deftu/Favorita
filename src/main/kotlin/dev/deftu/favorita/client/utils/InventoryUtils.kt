@@ -56,6 +56,14 @@ object InventoryUtils {
         }
 
         val slotIndex = slot.internalSlotIndex
+        return getSavedSlotIndex(screen, slotIndex)
+    }
+
+    @JvmStatic
+    fun getSavedSlotIndex(
+        screen: ContainerScreen,
+        slotIndex: Int
+    ): Int {
         return when {
             // Ensure that,
             // inventory itself starts at index 9 (9-35 in vanilla)
