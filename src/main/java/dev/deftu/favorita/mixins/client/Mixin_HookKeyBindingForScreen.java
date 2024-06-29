@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import java.util.function.BooleanSupplier;
 
 @Mixin(value = HandledScreen.class, priority = 1002)
-public class Mixin_HookKeyBinding {
+public class Mixin_HookKeyBindingForScreen {
 
     @Shadow @Nullable protected Slot focusedSlot;
 
