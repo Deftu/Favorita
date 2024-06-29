@@ -10,7 +10,10 @@
         "client.Mixin_BlockFavoritedCreativeSlots",
         "client.Mixin_BlockFavoritedHotbarSlots",
         "client.Mixin_BlockFavoritedSlots",
+        "client.Mixin_DrawHotbarOverlay",
         "client.Mixin_DrawSlotOverlay",
-        "client.Mixin_HookKeyBinding"
+        "client.Mixin_HookKeyBindingForScreen",
+        "client.Mixin_HookKeyBindingOnKeyboard",
+        "client.Mixin_HookKeyBindingOnMouse"
     ]
 }

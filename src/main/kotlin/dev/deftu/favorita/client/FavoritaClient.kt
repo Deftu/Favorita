@@ -17,6 +17,7 @@ import dev.deftu.omnicore.client.OmniKeyboard
 import net.minecraft.client.option.KeyBinding
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import org.jetbrains.annotations.ApiStatus.Internal
 
 object FavoritaClient {
 
@@ -31,6 +32,14 @@ object FavoritaClient {
     val favoriteKeyBinding: KeyBinding by lazy {
         KeyBinding("key.favorita.favorite", OmniKeyboard.KEY_F, FavoritaConstants.NAME)
     }
+
+    @Internal
+    @JvmStatic
+    val renderedHotbarIndices = mutableSetOf<Int>()
+
+    @Internal
+    @JvmStatic
+    val renderHotbarState = mutableMapOf<Int, HotbarState>()
 
     internal fun onInitializeClient() {
         FavoritaConfig.load()
@@ -49,6 +58,11 @@ object FavoritaClient {
     @Suppress("MemberVisibilityCanBePrivate")
     internal fun getKeyBindings(): List<KeyBinding> {
         return listOf(favoriteKeyBinding)
+    }
+
+    enum class HotbarState {
+        LOCKED,
+        UNLOCKED
     }
 
 }

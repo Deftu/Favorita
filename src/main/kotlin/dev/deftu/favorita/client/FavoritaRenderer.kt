@@ -16,36 +16,47 @@ object FavoritaRenderer {
 
     private val LOCK = IdentifierUtils.create(FavoritaConstants.ID, "lock.png")
 
+    @JvmField
+    val RED_BACKGROUND = Color(201, 42, 67, 89)
+
+    @JvmField
+    val ORANGE_BACKGROUND = Color(240, 185, 79, 89)
+
     @Internal
     @JvmStatic
+    @JvmOverloads
     @GameSide(Side.CLIENT)
     fun drawSlotOverlay(
         stack: OmniMatrixStack,
         x: Int,
         y: Int,
         width: Int,
-        height: Int
+        height: Int,
+        drawLock: Boolean = true,
+        color: Color = RED_BACKGROUND
     ) {
         // Draw the red background
         drawBlock(
             stack,
-            Color(201, 42, 67, 89),
+            color,
             x.toFloat(),
             y.toFloat(),
             x + width.toFloat(),
             y + height.toFloat()
         )
 
-        // Draw the lock itself
-        drawTexture(
-            LOCK,
-            stack,
-            Color(255, 255, 255, 166),
-            x.toFloat(),
-            y.toFloat(),
-            x + width.toFloat(),
-            y + height.toFloat()
-        )
+        if (drawLock) {
+            // Draw the lock itself
+            drawTexture(
+                LOCK,
+                stack,
+                Color(255, 255, 255, 166),
+                x.toFloat(),
+                y.toFloat(),
+                x + width.toFloat(),
+                y + height.toFloat()
+            )
+        }
     }
 
     @GameSide(Side.CLIENT)

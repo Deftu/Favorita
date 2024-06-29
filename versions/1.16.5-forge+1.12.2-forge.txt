@@ -20,3 +20,4 @@ net.minecraft.world.entity.player.Player containerMenu openContainer
 net.minecraft.world.inventory.AbstractContainerMenu net.minecraft.inventory.Container
 net.minecraft.world.inventory.AbstractContainerMenu handlerId windowId
 net.minecraft.client.gui.screens.Screen net.minecraft.client.gui.GuiScreen
+net.minecraft.client.gui.Gui net.minecraft.client.gui.GuiIngame

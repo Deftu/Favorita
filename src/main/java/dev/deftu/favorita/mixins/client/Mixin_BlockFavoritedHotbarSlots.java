@@ -9,6 +9,7 @@ package dev.deftu.favorita.mixins.client;
 //#endif
 
 import com.mojang.authlib.GameProfile;
+import dev.deftu.favorita.client.FavoritaClient;
 import dev.deftu.favorita.client.FavoritaConfig;
 import dev.deftu.favorita.client.utils.MiscUtils;
 import dev.deftu.favorita.client.utils.SoundUtils;
@@ -73,6 +74,7 @@ public abstract class Mixin_BlockFavoritedHotbarSlots extends AbstractClientPlay
             );
             SoundUtils.playBlockedSound();
             MiscUtils.notifyBlocked();
+            FavoritaClient.getRenderedHotbarIndices().add(slotIndex);
         }
     }
 

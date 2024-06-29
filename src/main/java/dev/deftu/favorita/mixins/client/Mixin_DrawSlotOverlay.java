@@ -58,9 +58,9 @@ public class Mixin_DrawSlotOverlay
     )
     private void favorita$onPostSlotRender(
             //#if MC >= 1.20.1
-            DrawContext drawContext,
+            DrawContext ctx,
             //#elseif MC >= 1.16.5
-            //$$ MatrixStack matrixStack,
+            //$$ MatrixStack ctx,
             //#endif
             int mouseX,
             int mouseY,
@@ -74,9 +74,9 @@ public class Mixin_DrawSlotOverlay
         //#endif
         OmniMatrixStack stack = new OmniMatrixStack(
                 //#if MC >= 1.20.1
-                drawContext.getMatrices()
+                ctx.getMatrices()
                 //#elseif MC >= 1.16.5
-                //$$ matrixStack
+                //$$ ctx
                 //#endif
         );
         for (
