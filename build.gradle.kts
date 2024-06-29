@@ -39,6 +39,7 @@ toolkitLoomHelper {
 }
 
 toolkitReleases {
+    rootProject.file("changelogs/${modData.version}.md").let { file -> if (file.exists()) changelogFile.set(file) }
     detectVersionType.set(true)
 
     modrinth {
