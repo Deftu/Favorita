@@ -23,7 +23,7 @@ jobs:
   build-and-comment:
     runs-on: ubuntu-latest
     outputs:
-      comment_id: ${{ steps.comment.outputs.comment-id }}
+      comment_id: ${{ steps.find-comment.outputs.comment-id }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -40,7 +40,7 @@ jobs:
 
       - name: Post/Update comment
         uses: peter-evans/create-or-update-comment@v3
-        id: comment
+        id: post-comment
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
@@ -90,7 +90,7 @@ jobs:
 
       - name: Post/Update comment
         uses: peter-evans/create-or-update-comment@v3
-        id: comment
+        id: update-comment
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
@@ -116,7 +116,7 @@ jobs:
             commit: ${{ github.event.pull_request.head.sha }}
             logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
-      - name: Update comment (Failure)
+      - name: Update Comment (Failure)
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ github.event.pull_request.number }}
