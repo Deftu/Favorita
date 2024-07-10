@@ -8,13 +8,14 @@ import dev.deftu.omnicore.client.OmniClient
 import dev.deftu.omnicore.client.render.OmniMatrixStack
 import dev.deftu.omnicore.client.render.OmniRenderState
 import dev.deftu.omnicore.client.render.OmniTessellator
+import dev.deftu.omnicore.common.OmniIdentifier
 import net.minecraft.util.Identifier
 import org.jetbrains.annotations.ApiStatus.Internal
 import java.awt.Color
 
 object FavoritaRenderer {
 
-    private val LOCK = IdentifierUtils.create(FavoritaConstants.ID, "lock.png")
+    private val LOCK = OmniIdentifier.create(FavoritaConstants.ID, "lock.png")
 
     @JvmField
     val RED_BACKGROUND = Color(201, 42, 67, 89)
