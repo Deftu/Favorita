@@ -28,6 +28,8 @@
         "fabric": "*",
         "fabricloader": ">=0.15.11",
         "fabric-language-kotlin": "*",
-        "minecraft": "~${minor_mc_version}"
+        "minecraft": "~${minor_mc_version}",
+        "textile": ">=0.5.1",
+        "omnicore": ">=0.9.0"
     }
 }
