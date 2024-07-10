@@ -44,18 +44,17 @@ public class Mixin_HookKeyBindingOnKeyboard {
             //#endif
             CallbackInfo ci
     ) {
+        //#if MC <= 1.12.2
+        //$$ int key = Keyboard.getEventKey();
+        //$$ int scancode = -1;
+        //#endif
         boolean isRelease =
                 //#if MC >= 1.16.5
                 action == GLFW.GLFW_RELEASE;
                 //#else
                 //$$ Keyboard.getEventKeyState();
                 //#endif
-        boolean isKeyBindingPressed =
-                //#if MC >= 1.16.5
-                FavoritaClient.getFavoriteKeyBinding().matchesKey(key, scancode);
-                //#else
-                //$$ Keyboard.getEventKey() == FavoritaClient.getFavoriteKeyBinding().getKeyCode();
-                //#endif
+        boolean isKeyBindingPressed = FavoritaClient.getFavoriteKeyBinding().matchesKey(key, scancode);
         if (
                 isRelease ||
                 OmniScreen.isInScreen() ||

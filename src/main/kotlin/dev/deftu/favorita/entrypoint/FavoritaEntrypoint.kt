@@ -76,9 +76,7 @@ class FavoritaEntrypoint
     //$$     modEventBus.addListener(this::onInitializeClient)
     //#if MC >= 1.19.2
     //$$     modEventBus.addListener<RegisterKeyMappingsEvent> { event ->
-    //$$         for (keyBinding in FavoritaClient.getKeyBindings()) {
-    //$$             event.register(keyBinding)
-    //$$         }
+    //$$         FavoritaClient.favoriteKeyBinding.register(event)
     //$$     }
     //#endif
     //$$ }

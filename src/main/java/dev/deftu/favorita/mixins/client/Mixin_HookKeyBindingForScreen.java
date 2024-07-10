@@ -58,13 +58,7 @@ public class Mixin_HookKeyBindingForScreen {
                 //#else
                 //$$ ci,
                 //#endif
-                () -> {
-                    //#if MC >= 1.16.5
-                    return FavoritaClient.getFavoriteKeyBinding().matchesMouse(button);
-                    //#else
-                    //$$ return FavoritaClient.getFavoriteKeyBinding().getKeyCode() == button;
-                    //#endif
-                }
+                () -> FavoritaClient.getFavoriteKeyBinding().matchesMouse(button)
         );
     }
 
@@ -80,7 +74,7 @@ public class Mixin_HookKeyBindingForScreen {
     private void favorita$onKeyPressed(
             //#if MC >= 1.16.5
             int keyCode,
-            int scanCode,
+            int scancode,
             int modifiers,
             CallbackInfoReturnable<Boolean> cir
             //#else
@@ -89,6 +83,9 @@ public class Mixin_HookKeyBindingForScreen {
             //$$ CallbackInfo ci
             //#endif
     ) {
+        //#if MC <= 1.12.2
+        //$$ int scancode = -1;
+        //#endif
         //#if MC >= 1.16.5
         HandledScreen<?> $this = (HandledScreen<?>) (Object) this;
         //#else
@@ -101,13 +98,7 @@ public class Mixin_HookKeyBindingForScreen {
                 //#else
                 //$$ ci,
                 //#endif
-                () -> {
-                    //#if MC >= 1.16.5
-                    return FavoritaClient.getFavoriteKeyBinding().matchesKey(keyCode, scanCode);
-                    //#else
-                    //$$ return FavoritaClient.getFavoriteKeyBinding().getKeyCode() == keyCode;
-                    //#endif
-                }
+                () -> FavoritaClient.getFavoriteKeyBinding().matchesKey(keyCode, scancode)
         );
     }
 

@@ -55,18 +55,16 @@ public class Mixin_HookKeyBindingOnMouse {
             //#endif
             CallbackInfo ci
     ) {
+        //#if MC <= 1.12.2
+        //$$ int button = Mouse.getEventButton();
+        //#endif
         boolean isRelease =
                 //#if MC >= 1.16.5
                 action == GLFW.GLFW_RELEASE;
                 //#else
                 //$$ Mouse.getEventButtonState();
                 //#endif
-        boolean isKeyBindingPressed =
-                //#if MC >= 1.16.5
-                FavoritaClient.getFavoriteKeyBinding().matchesMouse(button);
-                //#else
-                //$$ Mouse.getEventButton() == FavoritaClient.getFavoriteKeyBinding().getKeyCode();
-                //#endif
+        boolean isKeyBindingPressed = FavoritaClient.getFavoriteKeyBinding().matchesMouse(button);
         if (
                 isRelease ||
                 OmniScreen.isInScreen() ||
