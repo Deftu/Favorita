@@ -64,10 +64,13 @@ toolkitReleases {
 }
 
 dependencies {
-    val textileVersion = "0.3.1"
-    val omnicoreVersion = "0.6.0"
+    val textileVersion = "0.5.1"
+    val omnicoreVersion = "0.9.0"
+    val textualizerVersion = "0.1.0"
+    implementation("dev.deftu:textile:$textileVersion")
     modImplementation("dev.deftu:textile-$mcData:$textileVersion")
     modImplementation("dev.deftu:omnicore-$mcData:$omnicoreVersion")
+    modImplementation("dev.deftu:textualizer-$mcData:$textualizerVersion")
 
     if (mcData.isFabric) {
         modImplementation("net.fabricmc.fabric-api:fabric-api:${mcData.dependencies.fabric.fabricApiVersion}")
@@ -80,8 +83,10 @@ dependencies {
 
         modImplementation(includeOrShade("org.spongepowered:mixin:0.7.11-SNAPSHOT")!!)
 
+        includeOrShade("dev.deftu:textile:$textileVersion")
         includeOrShade("dev.deftu:textile-$mcData:$textileVersion")
         includeOrShade("dev.deftu:omnicore-$mcData:$omnicoreVersion")
+        includeOrShade("dev.deftu:textualizer-$mcData:$textualizerVersion")
     }
 }
 
@@ -91,6 +96,7 @@ tasks {
         if (mcData.isLegacyForge) {
             relocate("dev.deftu.textile", "dev.deftu.favorita.textile")
             relocate("dev.deftu.omnicore", "dev.deftu.favorita.omnicore")
+            relocate("dev.deftu.textualizer", "dev.deftu.favorita.textualizer")
         }
     }
 
