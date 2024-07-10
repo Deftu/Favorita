@@ -1,8 +1,11 @@
 package dev.deftu.favorita.mixins.client;
 
+//#if MC >= 1.21
+import net.minecraft.client.render.RenderTickCounter;
+//#endif
+
 //#if MC >= 1.20.1
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.render.RenderTickCounter;
 //#elseif MC >= 1.16.5
 //$$ import net.minecraft.client.util.math.MatrixStack;
 //#endif
@@ -64,7 +67,7 @@ public class Mixin_DrawHotbarOverlay {
             //#endif
             int x,
             int y,
-            //#if MC >= 1.20.1
+            //#if MC >= 1.21
             RenderTickCounter tickDelta,
             //#else
             //$$ float tickDelta,
