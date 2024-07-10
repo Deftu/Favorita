@@ -1,7 +1,6 @@
 package dev.deftu.favorita.client
 
 import dev.deftu.favorita.FavoritaConstants
-import dev.deftu.favorita.utils.IdentifierUtils
 import dev.deftu.omnicore.annotations.GameSide
 import dev.deftu.omnicore.annotations.Side
 import dev.deftu.omnicore.client.OmniClient
