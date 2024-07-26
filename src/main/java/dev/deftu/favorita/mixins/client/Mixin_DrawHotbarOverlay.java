@@ -42,7 +42,11 @@ public class Mixin_DrawHotbarOverlay {
                     target = "Lnet/minecraft/client/gui/DrawContext;drawItemInSlot(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/item/ItemStack;II)V"
                     //#elseif MC >= 1.16.5
                     //#if FABRIC
+                    //#if MC >= 1.19.4
                     //$$ target = "Lnet/minecraft/client/render/item/ItemRenderer;renderGuiItemOverlay(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/item/ItemStack;II)V"
+                    //#else
+                    //$$ target = "Lnet/minecraft/client/render/item/ItemRenderer;renderGuiItemOverlay(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/item/ItemStack;II)V"
+                    //#endif
                     //#else
                     //#if MC >= 1.19.4
                     //$$ target = "Lnet/minecraft/client/renderer/entity/ItemRenderer;renderGuiItemDecorations(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;II)V"
@@ -60,7 +64,7 @@ public class Mixin_DrawHotbarOverlay {
     private void favorita$renderInHotbar(
             //#if MC >= 1.20.1
             DrawContext ctx,
-            //#elseif MC >= 1.16.5
+            //#elseif MC >= 1.19.4
             //$$ MatrixStack ctx,
             //#elseif MC <= 1.8.9
             //$$ int index,
@@ -99,7 +103,7 @@ public class Mixin_DrawHotbarOverlay {
             OmniMatrixStack stack = new OmniMatrixStack(
                     //#if MC >= 1.20.1
                     ctx.getMatrices()
-                    //#elseif MC >= 1.16.5
+                    //#elseif MC >= 1.19.4
                     //$$ ctx
                     //#endif
             );
