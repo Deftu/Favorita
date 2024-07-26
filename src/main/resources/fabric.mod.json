@@ -30,6 +30,7 @@
         "fabric-language-kotlin": "*",
         "minecraft": "~${minor_mc_version}",
         "textile": ">=0.5.2",
+        "textualizer": ">=0.1.1",
         "omnicore": ">=0.9.0"
     }
 }
