@@ -91,7 +91,7 @@ public class Mixin_DrawHotbarOverlay {
                 //#if MC >= 1.17.1
                 oneBasedIndex - 1;
                 //#elseif MC >= 1.16.5
-                //$$ player.inventory.items.indexOf(itemStack);
+                //$$ player.inventory.main.indexOf(itemStack);
                 //#elseif MC >= 1.12.2
                 //$$ player.inventory.mainInventory.indexOf(itemStack);
                 //#else
