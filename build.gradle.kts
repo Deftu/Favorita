@@ -13,12 +13,17 @@ plugins {
     id("dev.deftu.gradle.tools.resources")
     id("dev.deftu.gradle.tools.bloom")
     id("dev.deftu.gradle.tools.shadow")
+    id("dev.deftu.gradle.tools.publishing.maven")
     id("dev.deftu.gradle.tools.minecraft.loom")
     id("dev.deftu.gradle.tools.minecraft.releases")
 }
 
 toolkitMultiversion {
     moveBuildsToRootProject.set(true)
+}
+
+toolkitMavenPublishing {
+    forceLowercase.set(true)
 }
 
 toolkitLoomHelper {
