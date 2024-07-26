@@ -38,7 +38,7 @@ object FavoritaClient {
         //#endif
         FavoritaConfig.load()
 
-        //#if MC <= 1.18.2
+        //#if FABRIC || FORGE-LIKE && MC <= 1.18.2
         favoriteKeyBinding.attemptRegister()
         //#endif
     }
