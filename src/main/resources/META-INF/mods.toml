@@ -20,7 +20,7 @@ license="LGPL-3.0-or-later"
 [[dependencies.${mod_id}]]
     modId="textile"
     mandatory=true
-    versionRange="[0.5.1,)"
+    versionRange="[0.5.2,)"
     ordering="AFTER"
     side="CLIENT"
 
