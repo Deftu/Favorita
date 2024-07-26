@@ -1,5 +1,9 @@
 package dev.deftu.favorita.client
 
+//#if MC <= 1.12.2
+//$$ import dev.deftu.textualizer.LanguageManager
+//#endif
+
 import dev.deftu.favorita.FavoritaConstants
 import dev.deftu.omnicore.client.OmniKeyBinding
 import dev.deftu.omnicore.client.OmniKeyboard
@@ -29,6 +33,9 @@ object FavoritaClient {
 
     internal fun onInitializeClient() {
         println("Hello Favorita ${FavoritaConstants.VERSION}!")
+        //#if MC <= 1.12.2
+        //$$ LanguageManager.initialize()
+        //#endif
         FavoritaConfig.load()
 
         //#if MC <= 1.18.2
