@@ -48,8 +48,10 @@ public class Mixin_DrawSlotOverlay
             //#endif
             at = @At(
                     value = "INVOKE",
-                    //#if MC >= 1.16.5
+                    //#if MC >= 1.17.1
                     target = "Lnet/minecraft/client/util/math/MatrixStack;pop()V",
+                    //#elseif MC >= 1.16.5
+                    //$$ target = "Lcom/mojang/blaze3d/systems/RenderSystem;popMatrix()V",
                     //#else
                     //$$ target = "Lnet/minecraft/client/renderer/GlStateManager;popMatrix()V",
                     //#endif

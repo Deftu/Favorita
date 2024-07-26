@@ -80,7 +80,7 @@ public class Mixin_DrawHotbarOverlay {
             //#if MC >= 1.12.2
             ItemStack itemStack,
             //#endif
-            //#if MC >= 1.16.5
+            //#if MC >= 1.17.1
             int oneBasedIndex,
             //#endif
             CallbackInfo ci
@@ -88,8 +88,10 @@ public class Mixin_DrawHotbarOverlay {
         // Render the slot overlay for 3 seconds when the player tries to drop a favorited item
 
         int slotIndex =
-                //#if MC >= 1.16.5
+                //#if MC >= 1.17.1
                 oneBasedIndex - 1;
+                //#elseif MC >= 1.16.5
+                //$$ player.inventory.items.indexOf(itemStack);
                 //#elseif MC >= 1.12.2
                 //$$ player.inventory.mainInventory.indexOf(itemStack);
                 //#else
