@@ -30,7 +30,7 @@ license="LGPL-3.0-or-later"
 [[dependencies.${mod_id}]]
     modId="omnicore"
     mandatory=true
-    versionRange="[0.9.1,)"
+    versionRange="[0.9.0,)"
     ordering="BEFORE"
     side="CLIENT"
 
