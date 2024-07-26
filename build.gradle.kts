@@ -58,6 +58,7 @@ toolkitReleases {
 
         if (mcData.version >= MinecraftVersion.VERSION_1_16_5) {
             dependencies.add(ModDependency("T0Zb6DLv", DependencyType.REQUIRED))        // Textile
+            dependencies.add(ModDependency("UhitUcEo", DependencyType.REQUIRED))        // Textualizer
             dependencies.add(ModDependency("MaDESStl", DependencyType.REQUIRED))        // Omnicore
         }
     }
