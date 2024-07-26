@@ -66,7 +66,7 @@ toolkitReleases {
 dependencies {
     val textileVersion = "0.5.2"
     val omnicoreVersion = "0.9.0"
-    val textualizerVersion = "0.1.0"
+    val textualizerVersion = "0.1.1"
     implementation("dev.deftu:textile:$textileVersion")
     modImplementation("dev.deftu:textile-$mcData:$textileVersion")
     modImplementation("dev.deftu:omnicore-$mcData:$omnicoreVersion")

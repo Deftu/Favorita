@@ -30,3 +30,10 @@ license="LGPL-3.0-or-later"
     versionRange="[0.9.1,)"
     ordering="BEFORE"
     side="CLIENT"
+
+[[dependencies.${mod_id}]]
+    modId="textualizer"
+    mandatory=true
+    versionRange="[0.1.1,)"
+    ordering="AFTER"
+    side="CLIENT"
