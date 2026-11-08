@@ -10,6 +10,7 @@ deps.oneconfig = "1.6.2"
 loomx.loom_version = "1.17-SNAPSHOT"
 
 publish.modrinth = "XLpX6IPW"
+publish.curseforge = "1792086"
 
 ["1.8.9"]
 mod.mc_compat = "1.8.9"
