@@ -1,4 +1,4 @@
-## Eclipse ##
+# eclipse
 eclipse
 bin
 *.launch
@@ -7,28 +7,27 @@ bin
 .classpath
 .project
 
-## IntelliJ IDEA ##
+# idea
 out
 classes
 *.ipr
 *.iws
 *.iml
-/.idea/*
-!/.idea/gradle.xml
+.idea
 
-## Netbeans ##
-.nb-gradle
-.nb-gradle-properties
-
-## VSCode ##
+# vscode
 .vscode
 
-## Gradle ##
+# gradle
 build
 .gradle
 
-## Other ##
-.kotlin
+#Netbeans
+.nb-gradle
+.nb-gradle-properties
+
+# other
 run
 .DS_Store
 Thumbs.db
+.kotlin
