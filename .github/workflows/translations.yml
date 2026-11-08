@@ -1,0 +1,45 @@
+name: Lowercase translation files
+
+on:
+  push:
+    branches: ['translations']
+    paths:
+      - 'src/main/resources/assets/favorita/lang/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: translations
+  cancel-in-progress: false
+
+jobs:
+  lowercase:
+    name: "Lowercase translation files"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - uses: actions/checkout@v6
+
+      # Minecraft only loads language files named in lowercase, like de_de.json
+      - name: Rename translation files
+        run: |
+          shopt -s nullglob
+          for file in src/main/resources/assets/favorita/lang/*.json; do
+            lower="$(dirname "$file")/$(basename "$file" | tr '[:upper:]' '[:lower:]')"
+            if [ "$file" != "$lower" ]; then
+              git mv -f "$file" "$lower"
+            fi
+          done
+
+      - name: Commit renamed files
+        run: |
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Lowercase translation file names"
+          git push
