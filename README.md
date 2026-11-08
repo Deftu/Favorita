@@ -1,5 +1,6 @@
 # Favorita
-A simple Minecraft mod which allows you to favorite your slots.
+
+Lock your favorite inventory slots so you never drop or move them by accident.
 
 ---
 
@@ -7,45 +8,27 @@ A simple Minecraft mod which allows you to favorite your slots.
 
 [![Discord Badge](https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/cozy/social/discord-singular_64h.png)](https://s.deftu.dev/discord)
 [![Ko-Fi Badge](https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/cozy/donate/kofi-singular_64h.png)](https://s.deftu.dev/kofi)
+[![Modrinth Badge](https://raw.githubusercontent.com/intergrav/devins-badges/v2/assets/cozy/available/modrinth_64h.png)](https://modrinth.com/mod/favorita)
 
 ---
 
-## For players
+## What it does
+Press the favorite slot key (`B` by default) while hovering a slot in your inventory to lock it. Press it outside an inventory to lock the hotbar slot you're holding. Press it again to unlock.
 
-### How do I use it?
+A locked slot stops you from dropping its item, picking it up, putting items into it, moving it with shift-click, number keys or the offhand key, and gathering from it with a double-click. Shift-clicked and dragged stacks skip it and go to the next free slot. It works on your hotbar, main inventory, armor and offhand, in any container, in survival and creative.
 
-The mod adds a new keybinding called "Favorite Slot" which is set to `F` by default.  
-When you press it while hovering over an item in your inventory, it will mark that slot as a favorite.  
-Or, if you're not in an inventory screen, it will mark the hotbar slot you currently have selected as favorited.
+Each world and server keeps its own locked slots.
 
-### What does the mod block?
-
-If the (hotbar) slot is favorited, you can't:
-- Move the item within it
-- Drop the item
-- Wipe that slot using the bin slot
-- Quick move items into or out of that slot
-- Swap an item into or out of that slot
-
-### Where will the mod block these actions?
-
-- In the player inventory
-- In the hotbar in any container
-- In your offhand slot
-- In your armor slots
+Favorita needs [OneConfig][oneconfig], and its settings are in the OneConfig menu. There you can change the key, stop it from unlocking slots outside your inventory, the lock's color, when hotbar locks show, and how you're told that a slot is locked. Run `/favorita` to open them, or `/favorita clear` to unlock everything in the current world or server.
 
 ---
 
 ## For developers
+`dev.deftu.favorita.api.FavoritedSlots` lets your mod check and change locked slots, either for the current world or server or for a place you name.
 
-### How do I add compatibility for it with my mod?
+A place is identified by a server's address, or by `world:` and a singleplayer world's save folder name. Slots are player inventory indices: 0 to 8 for the hotbar, 9 to 35 for the main inventory, 36 to 39 for armor and 40 for the offhand.
 
-An API is exposed via `dev.deftu.favorita.api.FavoritedSlots` which allows you to check if a slot is favorited.  
-Functions are provided to check if a slot is favorited, mark a slot as favorited, and unmark a slot as favorited. Both for the current identifier, if one is present, and for a specific identifier.
-
-### What is an "identifier"?
-
-Identifiers are strings used to determine the current environment the player is in. The value of an identifier is a constant `Singleplayer` when the player is in singleplayer, and the address of their current server entry when they're playing in multiplayer.
+Locks are saved in `config/Favorita/favorites.json`.
 
 ---
 
@@ -53,7 +36,8 @@ Identifiers are strings used to determine the current environment the player is 
 
 ---
 
-**This project is licensed under [LGPL-3.0][lgpl]**\
+**This project is licensed under [AGPL-3.0-or-later][agpl]**\
 **&copy; 2024 Deftu**
 
-[lgpl]: https://www.gnu.org/licenses/lgpl-3.0.en.html
+[oneconfig]: https://polyfrost.org/projects/oneconfig
+[agpl]: https://www.gnu.org/licenses/agpl-3.0.en.html
