@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "compatibilityLevel": "${java}",
+  "minVersion": "0.8",
+  "package": "dev.deftu.favorita.mixin",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "ContainerScreenMixin",
+    "CreativeScreenMixin",
+    "CreativeSlotAccessor",
+    "DropMixin",
+    "GameModeMixin",
+    "HotbarMixin",
+    "OffhandSwapMixin",
+    "SlotAccessor"
+  ]
+}

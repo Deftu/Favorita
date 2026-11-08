@@ -1,79 +1,39 @@
 package dev.deftu.favorita.api
 
-import dev.deftu.favorita.client.FavoritaConfig
 import dev.deftu.favorita.exceptions.NoIdentifierException
-import dev.deftu.omnicore.annotations.GameSide
-import dev.deftu.omnicore.annotations.Side
+import dev.deftu.favorita.slots.FavoriteStore
+import dev.deftu.favorita.slots.SlotLocks
 
+/**
+ * Checks and changes locked slots.
+ *
+ * A place is a server's address in lowercase, or `world:` followed by a singleplayer world's save folder name.
+ * Slots are player inventory indices: 0 to 8 for the hotbar, 9 to 35 for the main inventory, 36 to 39 for armor and 40 for the offhand.
+ * The results don't depend on whether the player has turned Favorita off.
+ */
 object FavoritedSlots {
-
-    /**
-     * Checks whether the given slot index is favorited for the given identifier.
-     *
-     * @param identifier The name of the world or address of the server.
-     * @param slotIndex The slot index to check.
-     *
-     * @throws NoIdentifierException If the given identifier is empty.
-     * @since 0.1.0
-     * @author Deftu
-     */
+    /** The current world or server's place, or null on the title screen */
     @JvmStatic
-    @GameSide(Side.CLIENT)
-    fun isFavorited(
-        identifier: String,
-        slotIndex: Int
-    ): Boolean = FavoritaConfig.isFavorited(identifier, slotIndex)
+    val currentPlace: String?
+        get() = SlotLocks.currentPlace?.key
 
-    /**
-     * Checks whether the given slot index is favorited for the currently loaded world or server.
-     *
-     * @param slotIndex The slot index to check.
-     *
-     * @throws NoIdentifierException If no server or world is loaded.
-     * @since 0.1.0
-     * @author Deftu
-     */
+    /** @throws NoIdentifierException if [place] is blank */
     @JvmStatic
-    @GameSide(Side.CLIENT)
-    fun isFavorited(
-        slotIndex: Int
-    ): Boolean = FavoritaConfig.isFavorited(slotIndex)
+    fun isFavorited(place: String, slotIndex: Int): Boolean = FavoriteStore.isLocked(checked(place), slotIndex)
 
-    /**
-     * Sets whether the given slot index is favorited for the given identifier.
-     *
-     * @param identifier The name of the world or address of the server.
-     * @param slotIndex The slot index to set.
-     * @param isFavorited Whether the slot should be favorited.
-     *
-     * @throws NoIdentifierException If the given identifier is empty.
-     * @since 0.1.0
-     * @author Deftu
-     */
+    /** @throws NoIdentifierException if no world or server is loaded */
     @JvmStatic
-    @GameSide(Side.CLIENT)
-    fun setFavorited(
-        identifier: String,
-        slotIndex: Int,
-        isFavorited: Boolean
-    ) = FavoritaConfig.setFavorited(identifier, slotIndex, isFavorited)
+    fun isFavorited(slotIndex: Int): Boolean = isFavorited(current(), slotIndex)
 
-    /**
-     * Sets whether the given slot index is favorited for the currently loaded world or server.
-     *
-     * @param slotIndex The slot index to set.
-     * @param isFavorited Whether the slot should be favorited.
-     *
-     * @throws NoIdentifierException If no server or world is loaded.
-     * @since 0.1.0
-     * @author Deftu
-     */
+    /** @throws NoIdentifierException if [place] is blank */
     @JvmStatic
-    @GameSide(Side.CLIENT)
-    fun setFavorited(
-        slotIndex: Int,
-        isFavorited: Boolean
-    ) = FavoritaConfig.setFavorited(slotIndex, isFavorited)
+    fun setFavorited(place: String, slotIndex: Int, isFavorited: Boolean) = FavoriteStore.setLocked(checked(place), slotIndex, isFavorited)
 
+    /** @throws NoIdentifierException if no world or server is loaded */
+    @JvmStatic
+    fun setFavorited(slotIndex: Int, isFavorited: Boolean) = setFavorited(current(), slotIndex, isFavorited)
 
+    private fun current(): String = currentPlace ?: throw NoIdentifierException("No server or world is loaded!")
+
+    private fun checked(place: String): String = place.ifBlank { throw NoIdentifierException("Identifier cannot be blank!") }
 }
