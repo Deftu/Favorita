@@ -1,13 +1,13 @@
 mod.id = "favorita"
 mod.name = "Favorita"
 mod.group = "dev.deftu"
-mod.version = "1.0.0"
+mod.version = "1.1.0"
 mod.description = "Lock your favorite inventory slots so you never drop or move them by accident."
 
 deps.fabric_loader = "0.19.3"
-deps.oneconfig = "1.6.2"
+deps.oneconfig = "1.9.0"
 
-loomx.loom_version = "1.17-SNAPSHOT"
+loomx.loom_version = "1.19-SNAPSHOT"
 
 publish.modrinth = "XLpX6IPW"
 publish.curseforge = "1792086"
