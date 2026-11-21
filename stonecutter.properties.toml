@@ -7,7 +7,7 @@ mod.description = "Lock your favorite inventory slots so you never drop or move 
 deps.fabric_loader = "0.19.3"
 deps.oneconfig = "1.9.0"
 
-loomx.loom_version = "1.17-SNAPSHOT"
+loomx.loom_version = "1.19-SNAPSHOT"
 
 publish.modrinth = "XLpX6IPW"
 publish.curseforge = "1792086"
